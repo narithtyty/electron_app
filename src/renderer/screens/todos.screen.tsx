@@ -34,9 +34,7 @@ export function TodosScreen() {
         console.log('🔧 Environment check:', {
           isDev: process.env.NODE_ENV === 'development',
           userAgent: navigator.userAgent.includes('Electron')
-        });
-
-        const data = await safeIpcInvoke('fetch-data');
+        });        const data = await safeIpcInvoke('fetch-todos');
         console.log('✅ Data received from main process:', data);
         console.log('📝 Data type:', typeof data);
         console.log('📊 Data length:', Array.isArray(data) ? data.length : 'Not an array');
@@ -84,7 +82,7 @@ export function TodosScreen() {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Todo List</h1>
+      <h1 className="text-2xl font-bold mb-4">Todo List Examples</h1>
 
       {/* Debug buttons */}
       <div className="mb-4 space-x-2">

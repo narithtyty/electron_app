@@ -1,34 +1,34 @@
 import { NavLink, Outlet } from 'react-router-dom'
 
 import { Separator } from './components/ui/separator'
-import { Vortex } from './components/ui/vortex'
+import { UserProfile } from './components/UserProfile'
 
 export function Layout() {
   return (
     <main className="flex flex-col items-center gap-5 mt-1">
-      <nav className="flex w-full gap-2 p-4">
-        <NavLink to="/">Main</NavLink>
+      <nav className="flex w-full justify-between items-center p-4 bg-white shadow-sm">
+        <div className="flex gap-2">
+          <NavLink to="/">Main</NavLink>
 
-        <Separator orientation="vertical" />
+          <Separator orientation="vertical" />
 
-        <NavLink to="/about">About</NavLink>
+          <NavLink to="/about">About</NavLink>
+
+          <Separator orientation="vertical" />
+
+          <NavLink to="/todos">Todos</NavLink>
+
+          <Separator orientation="vertical" />
+
+          <NavLink to="/api-demo">API Demo</NavLink>
+        </div>
+        
+        <UserProfile />
       </nav>
 
       <section className="items-center justify-center flex flex-col gap-6">
         <Outlet />
       </section>
-
-      {/* <div className="fixed left-0 -top-50 size-full -z-10 overflow-hidden">
-        <Vortex
-          backgroundColor="transparent"
-          className="flex size-full"
-          rangeY={300}
-          baseRadius={2}
-          particleCount={20}
-          rangeSpeed={1.5}
-          baseHue={50}
-        />
-      </div> */}
     </main>
   )
 }

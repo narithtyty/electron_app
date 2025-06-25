@@ -68,16 +68,49 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Disable text selection for a more native app feel */
-* {
+/* Disable text selection for UI elements for a more native app feel */
+button, nav, .nav-link, .button, [role="button"] {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
 }
 
-/* Allow text selection for input fields and content areas */
-input, textarea, [contenteditable="true"] {
+/* Enable text selection for content areas */
+p, h1, h2, h3, h4, h5, h6, span, div, li, td, th, 
+input, textarea, [contenteditable="true"], 
+.selectable, .content, main, article, section {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+/* Specific styles for common text elements */
+.title, .text-content, .description {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+/* Utility classes for controlling text selection */
+.text-selectable {
+  -webkit-user-select: text !important;
+  -moz-user-select: text !important;
+  -ms-user-select: text !important;
+  user-select: text !important;
+}
+
+.text-no-select {
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+}
+
+/* Make sure all text content is selectable by default */
+body, html {
   -webkit-user-select: text;
   -moz-user-select: text;
   -ms-user-select: text;

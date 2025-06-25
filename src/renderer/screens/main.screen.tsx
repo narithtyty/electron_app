@@ -3,13 +3,25 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Button } from '../components/button'
 import { Modal } from '../components/modal'
+import { useAuth } from '../contexts/AuthContext'
 
 export function MainScreen() {
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const { user } = useAuth()
 
   return (
     <>
       <header className="flex flex-col items-center">
+        {/* Welcome Message */}
+        {user && (
+          <div className="mb-4 text-center">
+            <p className="text-lg text-green-600">
+              Welcome back, <span className="font-semibold">{user.username}</span>!
+            </p>
+            <p className="text-sm text-gray-500 capitalize">Role: {user.role}</p>
+          </div>
+        )}
+
         <h1 className="title text-5xl">Electron Router DOM</h1>
 
         <p className="text-lg text-muted-foreground">
@@ -34,7 +46,19 @@ export function MainScreen() {
             <li>Seamless integration with react-router-dom</li>
             <li>Electron-specific routing capabilities</li>
             <li>Main process ↔ Renderer process communication</li>
+            <li>🔐 User Authentication System</li>
+            <li>📝 Text Selection & Copy/Paste Support</li>
           </ul>
+
+          <h2 className="text-2xl font-semibold mt-6">Authentication Info</h2>
+          <div className="p-4 bg-blue-50 rounded-lg">
+            <p className="text-sm text-blue-800 mb-2">
+              <strong>Current User:</strong> {user?.username}
+            </p>
+            <p className="text-sm text-blue-800">
+              <strong>Role:</strong> {user?.role}
+            </p>
+          </div>
 
           <h2 className="text-2xl font-semibold mt-6">Getting Started</h2>
           <p className="text-muted-foreground">
