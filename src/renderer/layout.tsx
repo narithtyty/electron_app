@@ -20,6 +20,10 @@ export function Layout() {
 
           <Separator orientation="vertical" />
 
+          <NavLink to="/transactions">Transactions</NavLink>
+
+          <Separator orientation="vertical" />
+
           <NavLink to="/api-demo">API Demo</NavLink>
         </div>
         

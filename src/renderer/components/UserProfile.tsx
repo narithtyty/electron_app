@@ -8,9 +8,23 @@ export function UserProfile() {
 
   if (!user) return null;
 
-  const handleLogout = () => {
-    logout();
+  const handleLogout = async () => {
+    await logout();
     setShowDropdown(false);
+  };
+
+  const getInitials = () => {
+    if (user.username) {
+      return user.username.charAt(0).toUpperCase();
+    }
+    if (user.email) {
+      return user.email.charAt(0).toUpperCase();
+    }
+    return 'U';
+  };
+
+  const getDisplayName = () => {
+    return user.username || user.email.split('@')[0] || 'User';
   };
 
   return (
@@ -21,11 +35,11 @@ export function UserProfile() {
       >
         <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
           <span className="text-white text-sm font-medium">
-            {user.username.charAt(0).toUpperCase()}
+            {getInitials()}
           </span>
         </div>
         <div className="text-left">
-          <p className="text-sm font-medium text-gray-900">{user.username}</p>
+          <p className="text-sm font-medium text-gray-900">{getDisplayName()}</p>
           <p className="text-xs text-gray-500 capitalize">{user.role}</p>
         </div>
         <svg
@@ -42,7 +56,8 @@ export function UserProfile() {
         <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg border border-gray-200 z-50">
           <div className="py-1">
             <div className="px-4 py-2 border-b border-gray-100">
-              <p className="text-sm font-medium text-gray-900">{user.username}</p>
+              <p className="text-sm font-medium text-gray-900">{getDisplayName()}</p>
+              <p className="text-xs text-gray-500">{user.email}</p>
               <p className="text-xs text-gray-500 capitalize">{user.role}</p>
             </div>
             <button

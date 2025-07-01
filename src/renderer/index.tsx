@@ -4,6 +4,7 @@ import React, { Suspense, useEffect, useState } from 'react'
 import { Routes } from './routes'
 import { ElectronLoader } from './components/LoadingSpinner'
 import { AuthProvider } from './contexts/AuthContext'
+import { TransactionProvider } from './contexts/TransactionContext'
 import { ProtectedRoute } from './components/ProtectedRoute'
 
 import './electron.css'
@@ -42,11 +43,13 @@ function App() {
 
   return (
     <AuthProvider>
-      <ProtectedRoute>
-        <Suspense fallback={<ElectronLoader />}>
-          <Routes />
-        </Suspense>
-      </ProtectedRoute>
+      <TransactionProvider>
+        <ProtectedRoute>
+          <Suspense fallback={<ElectronLoader />}>
+            <Routes />
+          </Suspense>
+        </ProtectedRoute>
+      </TransactionProvider>
     </AuthProvider>
   );
 }
