@@ -5,7 +5,12 @@
 
     <title>Electron Router DOM</title>
 
-    <meta http-equiv="Content-Security-Policy" content="connect-src https://api.github.com 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'" />
+    <!-- Google Fonts for Thai language support -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
+
+    <meta http-equiv="Content-Security-Policy" content="connect-src https://api.github.com https://fonts.googleapis.com https://fonts.gstatic.com 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com 'self'" />
   </head>
 
   <body>

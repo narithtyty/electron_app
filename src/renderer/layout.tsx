@@ -12,6 +12,10 @@ export function Layout() {
         <Separator orientation="vertical" />
 
         <NavLink to="/about">About</NavLink>
+
+        <Separator orientation="vertical" />
+
+        <NavLink to="/example-usage">PDF Example</NavLink>
       </nav>
 
       <section className="items-center justify-center flex flex-col gap-6">
