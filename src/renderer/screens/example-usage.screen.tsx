@@ -8,12 +8,16 @@ import {
   PDFDownloadLink,
   PDFViewer,
   Font,
+  Image,
   Svg,
   Path,
   Circle,
   Rect,
   G,
 } from "@react-pdf/renderer";
+
+// Import logo
+import logoImage from "../assets/E-POS-logo-1.png";
 
 // Register fonts
 Font.register({
@@ -62,6 +66,15 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     textAlign: "center",
     color: "#2563eb",
+  },
+  logoContainer: {
+    alignItems: "center",
+    marginBottom: 20,
+  },
+  logo: {
+    width: 100,
+    // height: 40,
+    marginBottom: 10,
   },
   section: {
     margin: 10,
@@ -168,6 +181,14 @@ const sampleData = {
 const MyDocument = ({ data }: { data: typeof sampleData }) => (
   <Document>
     <Page size="A4" style={styles.page}>
+      {/* Logo Section */}
+      <View style={styles.logoContainer}>
+        <Image
+          style={styles.logo}
+          src={logoImage}
+        />
+      </View>
+
       <Text style={styles.header}>{data.title}</Text>
 
       {/* <View style={styles.section}>
@@ -323,6 +344,7 @@ export function ExampleUsageScreen() {
   const [showPreview, setShowPreview] = useState(false);
   const [customTitle, setCustomTitle] = useState(sampleData.title);
   const [customTitleThai, setCustomTitleThai] = useState(sampleData.titleThai);
+  const [logoError, setLogoError] = useState(false);
 
   const currentData = {
     ...sampleData,
@@ -333,9 +355,24 @@ export function ExampleUsageScreen() {
 
   return (
     <div className="flex flex-col items-center gap-6 p-6 max-w-4xl mx-auto">
-      <h1 className="text-3xl font-bold text-center mb-4">
-        React PDF Renderer Example
-      </h1>
+      {/* Logo Section */}
+      <div className="flex flex-col items-center mb-4">
+        {!logoError ? (
+          <img
+            src={logoImage}
+            alt="E-POS Logo"
+            className="w-32 h-16 object-contain mb-4"
+            onError={() => setLogoError(true)}
+          />
+        ) : (
+          <div className="w-32 h-16 bg-gray-200 flex items-center justify-center mb-4 rounded">
+            <span className="text-gray-500 text-sm">E-POS Logo</span>
+          </div>
+        )}
+        <h1 className="text-3xl font-bold text-center">
+          React PDF Renderer Example
+        </h1>
+      </div>
 
       <div className="bg-white rounded-lg shadow-lg p-6 w-full">
         <h2 className="text-xl font-semibold mb-4">PDF Generation Controls</h2>

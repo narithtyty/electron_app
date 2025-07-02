@@ -10,6 +10,7 @@ const AboutScreen = lazy(() => import('./screens/about.screen').then(module => (
 const MainScreen = lazy(() => import('./screens/main.screen').then(module => ({ default: module.MainScreen })))
 const TodosScreen = lazy(() => import('./screens/todos.screen').then(module => ({ default: module.TodosScreen })))
 const ExampleUsageScreen = lazy(() => import('./screens/example-usage.screen').then(module => ({ default: module.ExampleUsageScreen })))
+const CsvUploadScreen = lazy(() => import('./screens/csv-upload.screen').then(module => ({ default: module.CsvUploadScreen })))
 
 export function Routes() {
   return (
@@ -45,6 +46,14 @@ export function Routes() {
             element={
               <Suspense fallback={<MinimalLoader />}>
                 <ExampleUsageScreen />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/csv-upload"
+            element={
+              <Suspense fallback={<MinimalLoader />}>
+                <CsvUploadScreen />
               </Suspense>
             }
           />

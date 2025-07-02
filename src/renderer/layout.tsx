@@ -6,7 +6,7 @@ import { Vortex } from './components/ui/vortex'
 export function Layout() {
   return (
     <main className="flex flex-col items-center gap-5 mt-1">
-      <nav className="flex w-full gap-2 p-4">
+      <nav className="flex w-full gap-2 p-4 sticky top-0 bg-white z-50 shadow">
         <NavLink to="/">Main</NavLink>
 
         <Separator orientation="vertical" />
@@ -16,6 +16,10 @@ export function Layout() {
         <Separator orientation="vertical" />
 
         <NavLink to="/example-usage">PDF Example</NavLink>
+
+        <Separator orientation="vertical" />
+
+        <NavLink to="/csv-upload">CSV Upload</NavLink>
       </nav>
 
       <section className="items-center justify-center flex flex-col gap-6">
