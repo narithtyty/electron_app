@@ -1,8 +1,9 @@
 appId: com.daltonmenezes.electronrouterdom
-productName: Electron Router DOM basic example
+productName: Eposservice
 electronVersion: 21.2.3
 directories:
   buildResources: build
+icon: src/build/favicon
 files:
   - '!**/.vscode/*'
   - '!src/*'
@@ -13,8 +14,10 @@ asarUnpack:
   - '**/*.{node,dll}'
 win:
   executableName: electron-router-dom-basic-example
+  icon: src/build/favicon.ico
 mac:
   category: public.app-category.developer-tools
+  icon: src/build/favicon.icns
   target:
     - dir
 linux:
