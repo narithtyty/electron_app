@@ -45,8 +45,22 @@ app.commandLine.appendSwitch("--disable-gpu-sandbox");
 app.commandLine.appendSwitch("--disable-software-rasterizer");
 app.commandLine.appendSwitch("--disable-gpu");
 
-app.whenReady().then(() => {
+app.whenReady().then(async () => {
   setupIpcHandlers();
+
+  // Initialize CSV folder on startup
+  try {
+    const { getSimpleCsvFolderPath, getSimpleCsvBackupFolderPath, ensureFolderExists } = await import('./fileSystemUtils');
+    const csvFolderPath = getSimpleCsvFolderPath();
+    const backupFolderPath = getSimpleCsvBackupFolderPath();
+    ensureFolderExists(csvFolderPath);
+    ensureFolderExists(backupFolderPath);
+    console.log(`CSV monitoring folder ready at: ${csvFolderPath}`);
+    console.log(`CSV backup folder ready at: ${backupFolderPath}`);
+  } catch (error) {
+    console.error('Error initializing CSV folders:', error);
+  }
+
   createMainWindow();
 
   app.on("activate", () => {
