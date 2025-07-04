@@ -14,10 +14,10 @@ asarUnpack:
   - '**/*.{node,dll}'
 win:
   executableName: electron-router-dom-basic-example
-  icon: src/build/favicon.ico
+  icon: src/assets/icons/favicon.ico
 mac:
   category: public.app-category.developer-tools
-  icon: src/build/favicon.icns
+  icon: src/assets/icons/favicon.icns
   target:
     - dir
 linux:
